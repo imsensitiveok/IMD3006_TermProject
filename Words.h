@@ -6,7 +6,7 @@ public:
 
 	//DATA:
 	string word;
-	bool found;
+	bool isFound;
 
 	//FUNCTIONS:
 	Words();

@@ -25,7 +25,7 @@ class ofApp : public ofBaseApp{
 		//DATA:
 		float time;
 		bool isPaused;
-		bool insructionsOpen;
+		bool instructionsOpen;
 		bool selectingWord;
 
 		//FUNCTIONS:
