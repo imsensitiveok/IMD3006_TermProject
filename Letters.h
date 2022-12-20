@@ -9,6 +9,7 @@ public:
 	ofColor colour;
 	ofRectangle square;
 	int word;
+	bool clicked;
 
 	//FUNCTIONS:
 	Letters();

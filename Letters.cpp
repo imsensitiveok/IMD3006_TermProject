@@ -6,6 +6,7 @@ Letters::Letters() {
 	square.width = SIZE;
 	square.height = SIZE;
 	word = -1;
+	clicked = false;
 }
 
 Letters::~Letters() {

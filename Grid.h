@@ -5,18 +5,16 @@ class Grid
 public:
 
 	//CLASSES:
-	//Render render;
-	Letters letter[16][16];
-	Words wordsToFind[10];
-	
+	Letters letter[15][15];
+	Words wordToFind[10];
+
 	//DATA:
-	int gameNum;
+	int totalLetters;
 
 	//CODE:
 	Grid();
 	~Grid();
-	//void Draw();
-
+	void setupGame(int gameNumber);
 };
 
 

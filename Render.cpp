@@ -11,8 +11,13 @@ Render::~Render() {
 void Render::drawGrid(Grid* grid) {
 	for (int i = 0; i < NUM_LETTERS; i++) {
 		for (int j = 0; j < NUM_LETTERS; j++) {
+
+			ofSetColor(grid->letter[i][j].colour);
 			ofDrawRectangle(grid->letter[i][j].square);
-			char let = grid->letter[i][j].letter;
+
+			ofSetColor(0, 0, 0);
+			ofDrawBitmapString(grid->letter[i][j].letter, GRID_X + SIZE * i + BUFFER * i + SIZE / 2, GRID_Y + SIZE * j + BUFFER * j + SIZE / 2);
+
 		}
 	}
 }
