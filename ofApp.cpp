@@ -27,16 +27,16 @@ void ofApp::setup(){
 
 	//setup buttons:
 	pauseButton.x = 850;
-	pauseButton.y = 475;
+	pauseButton.y = 600;
 	pauseButton.width = BUTTON_W;
 	pauseButton.height = BUTTON_H;
 	instructionsButton.x = 850;
-	instructionsButton.y = 550;
+	instructionsButton.y = 675;
 	instructionsButton.width = BUTTON_W;
 	instructionsButton.height = BUTTON_H;
 
 	//setup data:
-	time = 120;
+	time = AMOUNT_OF_TIME;
 	instructionsOpen = false;
 	gameNum = 0;
 	score = 0;
@@ -50,7 +50,7 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
 
-	//check if words are all found:
+	//check if game won:
 	bool allFound = true;
 	for (int i = 0; i < NUM_WORDS; i++) {
 		if (grid.wordToFind[i].isFound == false) {
@@ -68,8 +68,25 @@ void ofApp::update(){
 		grid.wordToFind[i].check();
 	}
 
+	//check if game over:
+	if (time <= 0) {
+		gameOverScreen.open = true;
+	}
+
 	//timer automatically counts down
-	time -= 0.025;
+	if (time >= 0 && pauseScreen.open == false) {
+		time -= 0.025;
+	}
+
+	//track score:
+	int newScore = 0;
+	for (int i = 0; i < NUM_WORDS; i++) {
+		if (grid.wordToFind[i].isFound == true) {
+			newScore += grid.wordToFind[i].numLetters * 5;
+		}
+	}
+	score = newScore;
+
 }
 
 //--------------------------------------------------------------
@@ -80,29 +97,28 @@ void ofApp::draw(){
 
 	//draw grid:
 	render.drawGrid(&grid);
-
-	//draw pause buttons:
-	render.drawButton(&pauseButton, "pause");
-
-	//draw instructions button:
-	render.drawButton(&instructionsButton, "instructions");
 	
+	//draw time:
+	render.drawText("TIME REMAINING:", 850, 400);
+	render.drawText(ofToString((int)time), 875, 425);
+
+	//draw score:
+	render.drawText("SCORE:", 850, 475);
+	render.drawText(ofToString(score), 875, 500);
+
+	//draw buttons:
+	render.drawButton(&pauseButton, "pause");
+	render.drawButton(&instructionsButton, "instructions");
+
 	//draw screens:
 	render.displayScreen(&winScreen);
 	render.displayScreen(&pauseScreen);
 	render.displayScreen(&gameOverScreen);
 
 	//draw instructions:
-	//if (instructionsOpen == true) {
-	//	render.drawImage(&instructions, 0, 0);
-	//}
-
-	ofSetColor(ofColor::white);
-	ofDrawBitmapString("Time Remaining:", 850, 650);
-	ofDrawBitmapString((int)time, 900, 675);
-
-	ofDrawBitmapString("Score", 850, 700);
-	ofDrawBitmapString(score, 900, 725);
+	if (instructionsOpen == true) {
+		render.drawImage(&instructions, 0, 0);
+	}
 }
 
 //--------------------------------------------------------------s
@@ -117,12 +133,18 @@ void ofApp::mousePressed(int x, int y, int button){
 				//checks if clicked inside letter
 				if (grid.letter[i][j].square.inside(x, y) && grid.letter[i][j].clicked == false) {
 
-					//changes colour
+					//IF wrong letter:
 					if (grid.letter[i][j].word == -1) {
+						//changes colour:
 						grid.letter[i][j].colour = ofColor(255, 0, 0);
+						//update timer:
+						time -= 5;
 						printf("wrong letter\n");
 					}
+
+					//IF right letter:
 					else {
+						//changes colour:
 						grid.letter[i][j].colour = ofColor(0, 255, 0);
 						grid.wordToFind[grid.letter[i][j].word].foundLetters++;
 						printf("right letter\n");
@@ -139,7 +161,8 @@ void ofApp::mousePressed(int x, int y, int button){
 	//win screen:
 	if (winScreen.button.inside(x, y) && winScreen.open == true) {
 		winScreen.open = false;
-		Grid* grid = new Grid();
+		Grid newGrid;
+		grid = newGrid;
 		setup();
 		printf("new game\n");
 	}
@@ -151,7 +174,9 @@ void ofApp::mousePressed(int x, int y, int button){
 	//game over screen:
 	if (gameOverScreen.button.inside(x, y) && gameOverScreen.open == true) {
 		gameOverScreen.open = false;
-		
+		Grid newGrid;
+		grid = newGrid;
+		setup();
 		printf("new game\n");
 	}
 	//pause:

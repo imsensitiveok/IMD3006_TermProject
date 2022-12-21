@@ -22,3 +22,4 @@ using namespace std;
 #define WINDOW_H 825
 #define BUTTON_H 50
 #define BUTTON_W 200
+#define AMOUNT_OF_TIME 100;

@@ -17,6 +17,6 @@ public:
 	//void playSoundEffect(ofSoundPlayer* sound);
 	void drawButton(ofRectangle* button, string text);
 	void drawImage(ofImage* img, int x, int y);
-	void drawText(string text, int x, int y);
+	void drawText(string txt, int x, int y);
 
 };

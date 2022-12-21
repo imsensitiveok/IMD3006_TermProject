@@ -64,11 +64,13 @@ void Render::drawButton(ofRectangle* button, string text) {
 	ofDrawBitmapString(text, button->x + BUTTON_W / 4, button->y + BUTTON_H / 2);
 }
 
-void drawImage(ofImage* img, int x, int y) {
+void Render::drawImage(ofImage* img, int x, int y) {
+	ofSetColor(255, 255, 255);
 	ofImage image = *img;
 	image.draw(x, y);
 }
 
-void drawText(string text, int x, int y) {
-	ofDrawBitmapString(text, x, y);
+void Render::drawText(string txt, int x, int y) {
+	ofSetColor(255, 255, 255);
+	ofDrawBitmapString(txt, x, y);
 }
