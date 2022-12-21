@@ -68,3 +68,7 @@ void drawImage(ofImage* img, int x, int y) {
 	ofImage image = *img;
 	image.draw(x, y);
 }
+
+void drawText(string text, int x, int y) {
+	ofDrawBitmapString(text, x, y);
+}

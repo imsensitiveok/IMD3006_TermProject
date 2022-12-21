@@ -29,6 +29,7 @@ class ofApp : public ofBaseApp{
 		float time;
 		bool instructionsOpen;
 		int gameNum;
+		int score;
 
 		//FUNCTIONS:
 		void setup();

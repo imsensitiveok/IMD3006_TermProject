@@ -36,9 +36,10 @@ void ofApp::setup(){
 	instructionsButton.height = BUTTON_H;
 
 	//setup data:
-	time = 0;
+	time = 120;
 	instructionsOpen = false;
 	gameNum = 0;
+	score = 0;
 
 
 	//setup grid:
@@ -59,6 +60,7 @@ void ofApp::update(){
 	if (allFound == true) {
 		winScreen.open = true;
 		printf("won");
+		cout << score;
 	}
 
 	//check if full word is found
@@ -66,6 +68,8 @@ void ofApp::update(){
 		grid.wordToFind[i].check();
 	}
 
+	//timer automatically counts down
+	time -= 0.025;
 }
 
 //--------------------------------------------------------------
@@ -92,6 +96,13 @@ void ofApp::draw(){
 	//if (instructionsOpen == true) {
 	//	render.drawImage(&instructions, 0, 0);
 	//}
+
+	ofSetColor(ofColor::white);
+	ofDrawBitmapString("Time Remaining:", 850, 650);
+	ofDrawBitmapString((int)time, 900, 675);
+
+	ofDrawBitmapString("Score", 850, 700);
+	ofDrawBitmapString(score, 900, 725);
 }
 
 //--------------------------------------------------------------s
