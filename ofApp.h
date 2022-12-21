@@ -13,23 +13,22 @@ class ofApp : public ofBaseApp{
 		Screen pauseScreen;
 		Screen gameOverScreen;
 
-		//SOUND EFFECTS:
-		ofSoundPlayer positiveSound;
-		ofSoundPlayer negativeSound;
-
-		// --------- BUTTONS HERE --------------
+		////SOUND EFFECTS:
+		//ofSoundPlayer positiveSound;
+		//ofSoundPlayer negativeSound;
 
 		//IMAGES:
 		ofImage instructions;
 
+		//BUTTONS:
+		ofRectangle pauseButton;
+		ofRectangle instructionsButton;
+
+
 		//DATA:
 		float time;
-		bool isPaused;
 		bool instructionsOpen;
-		bool gameWon;
-
 		int gameNum;
-		int lettersFound;
 
 		//FUNCTIONS:
 		void setup();

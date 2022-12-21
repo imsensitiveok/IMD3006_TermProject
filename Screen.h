@@ -5,11 +5,14 @@ class Screen
 public:
 
 	ofRectangle background;
-
-	// ------- BUTTON HERE --------
-
-	string text;
+	ofRectangle button;
 	ofColor themeColor;
+	ofSoundPlayer soundEffect;
+
+	//DATA:
+	string text;
+	string buttonText;
+	bool open;
 
 	//FUNCTIONS:
 	Screen();

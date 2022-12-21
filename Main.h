@@ -18,5 +18,7 @@ using namespace std;
 #define GRID_Y 40
 #define NUM_LETTERS 15	//update in Grid.h
 #define NUM_WORDS 10	//update in Grid.h
-#define WINDOW_W 1600
-#define WINDOW_H 900
+#define WINDOW_W 1200
+#define WINDOW_H 825
+#define BUTTON_H 50
+#define BUTTON_W 200
