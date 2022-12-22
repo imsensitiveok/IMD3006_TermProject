@@ -16,6 +16,8 @@ Grid::Grid() {
 			letter[i][j].letter = 65 + (rand() % 26); //65 - 90
 		}
 	}
+
+	gameNum = rand() % 2;
 	
 }
 
@@ -23,14 +25,14 @@ Grid::~Grid() {
 
 }
 
-void Grid::setupGrid(int gameNumber) {
+void Grid::setupGrid() {
 
 	//letter[i][j]
 	//i = column
 	//j = row
 	
 	//GAME 0:
-	if (gameNumber == 0) {
+	if (gameNum == 0) {
 
 		wordToFind[0].word = "CAT";
 			letter[4][1].letter = 'C';
@@ -174,7 +176,7 @@ void Grid::setupGrid(int gameNumber) {
 			wordToFind[9].numLetters = 6;
 			
 	}
-	else if (gameNumber == 1) {
+	else if (gameNum == 1) {
 
 		wordToFind[0].word = "BASEBALL";
 			letter[2][2].letter = 'B';

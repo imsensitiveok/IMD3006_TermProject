@@ -39,12 +39,11 @@ void ofApp::setup(){
 	//setup data:
 	time = AMOUNT_OF_TIME;
 	instructionsOpen = false;
-	gameNum = rand() % 2;
 	score = 0;
 
 
 	//setup grid:
-	grid.setupGrid(gameNum);
+	grid.setupGrid();
 	
 }
 

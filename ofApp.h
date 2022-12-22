@@ -17,17 +17,17 @@ class ofApp : public ofBaseApp{
 		//ofSoundPlayer positiveSound;
 		//ofSoundPlayer negativeSound;
 
-		//IMAGES:
-		ofImage instructions;
-
 		//BUTTONS:
 		ofRectangle pauseButton;
 		ofRectangle instructionsButton;
 
+		//IMAGES:
+		ofImage instructions;
+
 		//DATA:
 		float time;
 		bool instructionsOpen;
-		int gameNum;
+		//int gameNum;
 		int score;
 
 		//FUNCTIONS:
