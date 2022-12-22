@@ -1,10 +1,10 @@
 #include "Main.h"
 
 Letters::Letters() {
-	letter = '_';
 	colour = ofColor(255, 255, 255);
 	square.width = SIZE;
 	square.height = SIZE;
+	letter = '_';
 	word = -1;
 	clicked = false;
 }

@@ -3,11 +3,11 @@
 class Letters
 {
 public:
+	ofColor colour;
+	ofRectangle square;
 
 	//DATA:
 	char letter;
-	ofColor colour;
-	ofRectangle square;
 	int word;
 	bool clicked;
 

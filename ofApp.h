@@ -24,7 +24,6 @@ class ofApp : public ofBaseApp{
 		ofRectangle pauseButton;
 		ofRectangle instructionsButton;
 
-
 		//DATA:
 		float time;
 		bool instructionsOpen;
@@ -36,16 +35,5 @@ class ofApp : public ofBaseApp{
 		void update();
 		void draw();
 		void mousePressed(int x, int y, int button);
-
-		//void keyPressed(int key);
-		//void keyReleased(int key);
-		//void mouseMoved(int x, int y );
-		//void mouseDragged(int x, int y, int button);
-		//void mouseReleased(int x, int y, int button);
-		//void mouseEntered(int x, int y);
-		//void mouseExited(int x, int y);
-		//void windowResized(int w, int h);
-		//void dragEvent(ofDragInfo dragInfo);
-		//void gotMessage(ofMessage msg);
 		
 };

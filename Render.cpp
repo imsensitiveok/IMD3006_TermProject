@@ -41,7 +41,7 @@ void Render::displayScreen(Screen* screen) {
 
 
 		//draw background:
-		ofSetColor(screen->themeColor);
+		ofSetColor(screen->backgroundColor);
 		ofDrawRectangle(screen->background);
 
 		//draw text:

@@ -6,7 +6,7 @@ public:
 
 	ofRectangle background;
 	ofRectangle button;
-	ofColor themeColor;
+	ofColor backgroundColor;
 	ofSoundPlayer soundEffect;
 
 	//DATA:

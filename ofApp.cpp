@@ -17,7 +17,7 @@ void ofApp::setup(){
 	pauseScreen.text = "GAME PAUSED";
 	pauseScreen.buttonText = "resume game";
 	//pauseScreen.soundEffect.load("---");
-	pauseScreen.themeColor = ofColor(7, 55, 99, 255);
+	pauseScreen.backgroundColor = ofColor(7, 55, 99, 255);
 
 	gameOverScreen.text = "GAME OVER";
 	gameOverScreen.buttonText = "new game";
@@ -39,7 +39,7 @@ void ofApp::setup(){
 	//setup data:
 	time = AMOUNT_OF_TIME;
 	instructionsOpen = false;
-	gameNum = 0;
+	gameNum = rand() % 2;
 	score = 0;
 
 
@@ -75,7 +75,7 @@ void ofApp::update(){
 	}
 
 	//timer automatically counts down
-	if (time >= 0 && pauseScreen.open == false && instructionsOpen == false) {
+	if (time >= 0 && pauseScreen.open == false && instructionsOpen == false && winScreen.open == false) {
 		time -= 0.025;
 	}
 

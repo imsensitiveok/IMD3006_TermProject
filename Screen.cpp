@@ -14,7 +14,7 @@ Screen::Screen() {
 	button.width = BUTTON_W;
 	button.height = BUTTON_H;
 
-	themeColor = ofColor(0, 0, 0, 200);
+	backgroundColor = ofColor(0, 0, 0, 200);
 	buttonText = "__";
 	text = "__";
 	open = false;
