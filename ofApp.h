@@ -13,9 +13,11 @@ class ofApp : public ofBaseApp{
 		Screen pauseScreen;
 		Screen gameOverScreen;
 
-		////SOUND EFFECTS:
-		//ofSoundPlayer positiveSound;
-		//ofSoundPlayer negativeSound;
+		//SOUND EFFECTS:
+		ofSoundPlayer correct;
+		ofSoundPlayer wrong;
+		ofSoundPlayer loseGame;
+		ofSoundPlayer winGame;
 
 		//BUTTONS:
 		ofRectangle pauseButton;

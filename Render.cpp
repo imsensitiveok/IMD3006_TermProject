@@ -56,6 +56,10 @@ void Render::displayScreen(Screen* screen) {
 	}
 }
 
+//void playSoundEffect(ofSoundPlayer* sound) {
+//	sound->play();
+//}
+
 void Render::drawButton(ofRectangle* button, string text) {
 	ofSetColor(255, 255, 255);
 	ofDrawRectangle(*button);

@@ -17,7 +17,7 @@ Grid::Grid() {
 		}
 	}
 
-	gameNum = rand() % 2;
+	gameNum = rand() % 3;
 	
 }
 
@@ -349,6 +349,175 @@ void Grid::setupGrid() {
 			letter[1][11].letter = 'G';
 			letter[1][11].word = 9;
 			wordToFind[9].numLetters = 7;
+	}
+	else if (gameNum == 2) {
+			wordToFind[0].word = "MAGIC";
+			letter[5][2].letter = 'M';
+			letter[5][2].word = 0;
+			letter[5][3].letter = 'A';
+			letter[5][3].word = 0;
+			letter[5][4].letter = 'G';
+			letter[5][4].word = 0;
+			letter[5][5].letter = 'I';
+			letter[5][5].word = 0;
+			letter[5][6].letter = 'C';
+			letter[5][6].word = 0;
+			wordToFind[0].numLetters = 5;
+
+			wordToFind[1].word = "BROOMSTICK";
+			letter[3][5].letter = 'B';
+			letter[3][5].word = 1;
+			letter[3][6].letter = 'R';
+			letter[3][6].word = 1;
+			letter[3][7].letter = 'O';
+			letter[3][7].word = 1;
+			letter[3][8].letter = 'O';
+			letter[3][8].word = 1;
+			letter[3][9].letter = 'M';
+			letter[3][9].word = 1;
+			letter[3][10].letter = 'S';
+			letter[3][10].word = 1;
+			letter[3][11].letter = 'T';
+			letter[3][11].word = 1;
+			letter[3][12].letter = 'I';
+			letter[3][12].word = 1;
+			letter[3][13].letter = 'C';
+			letter[3][13].word = 1;
+			letter[3][14].letter = 'K';
+			letter[3][14].word = 1;
+			wordToFind[1].numLetters = 10;
+
+			wordToFind[2].word = "POTION";
+			letter[1][1].letter = 'P';
+			letter[1][1].word = 2;
+			letter[2][1].letter = 'O';
+			letter[2][1].word = 2;
+			letter[3][1].letter = 'T';
+			letter[3][1].word = 2;
+			letter[4][1].letter = 'I';
+			letter[4][1].word = 2;
+			letter[5][1].letter = 'O';
+			letter[5][1].word = 2;
+			letter[6][1].letter = 'N';
+			letter[6][1].word = 2;
+			wordToFind[2].numLetters = 6;
+
+			wordToFind[3].word = "CAULDRON";
+			letter[2][0].letter = 'C';
+			letter[2][0].word = 3;
+			letter[3][0].letter = 'A';
+			letter[3][0].word = 3;
+			letter[4][0].letter = 'U';
+			letter[4][0].word = 3;
+			letter[5][0].letter = 'L';
+			letter[5][0].word = 3;
+			letter[6][0].letter = 'D';
+			letter[6][0].word = 3;
+			letter[7][0].letter = 'R';
+			letter[7][0].word = 3;
+			letter[8][0].letter = 'O';
+			letter[8][0].word = 3;
+			letter[9][0].letter = 'N';
+			letter[9][0].word = 3;
+			wordToFind[3].numLetters = 8;
+
+			wordToFind[4].word = "HERBS";
+			letter[7][6].letter = 'H';
+			letter[7][6].word = 4;
+			letter[8][6].letter = 'E';
+			letter[8][6].word = 4;
+			letter[9][6].letter = 'R';
+			letter[9][6].word = 4;
+			letter[10][6].letter = 'B';
+			letter[10][6].word = 4;
+			letter[11][6].letter = 'S';
+			letter[11][6].word = 4;
+			wordToFind[4].numLetters = 5;
+
+			wordToFind[5].word = "CRYSTAL";
+			letter[7][4].letter = 'C';
+			letter[7][4].word = 5;
+			letter[8][4].letter = 'R';
+			letter[8][4].word = 5;
+			letter[9][4].letter = 'Y';
+			letter[9][4].word = 5;
+			letter[10][4].letter = 'S';
+			letter[10][4].word = 5;
+			letter[11][4].letter = 'T';
+			letter[11][4].word = 5;
+			letter[12][4].letter = 'A';
+			letter[12][4].word = 5;
+			letter[13][4].letter = 'L';
+			letter[13][4].word = 5;
+			wordToFind[5].numLetters = 7;
+
+			wordToFind[6].word = "SPELL";
+			letter[10][2].letter = 'S';
+			letter[10][2].word = 6;
+			letter[11][2].letter = 'P';
+			letter[11][2].word = 6;
+			letter[12][2].letter = 'E';
+			letter[12][2].word = 6;
+			letter[13][2].letter = 'L';
+			letter[13][2].word = 6;
+			letter[14][2].letter = 'L';
+			letter[14][2].word = 6;
+			wordToFind[6].numLetters = 5;
+
+			wordToFind[7].word = "GRIMOIRE";
+			letter[14][7].letter = 'G';
+			letter[14][7].word = 7;
+			letter[14][8].letter = 'R';
+			letter[14][8].word = 7;
+			letter[14][9].letter = 'I';
+			letter[14][9].word = 7;
+			letter[14][10].letter = 'M';
+			letter[14][10].word = 7;
+			letter[14][11].letter = 'O';
+			letter[14][11].word = 7;
+			letter[14][12].letter = 'I';
+			letter[14][12].word = 7;
+			letter[14][13].letter = 'R';
+			letter[14][13].word = 7;
+			letter[14][14].letter = 'E';
+			letter[14][14].word = 7;
+			wordToFind[7].numLetters = 8;
+
+			wordToFind[8].word = "FAIRYDUST";
+			letter[4][12].letter = 'F';
+			letter[4][12].word = 8;
+			letter[5][12].letter = 'A';
+			letter[5][12].word = 8;
+			letter[6][12].letter = 'I';
+			letter[6][12].word = 8;
+			letter[7][12].letter = 'R';
+			letter[7][12].word = 8;
+			letter[8][12].letter = 'Y';
+			letter[8][12].word = 8;
+			letter[9][12].letter = 'D';
+			letter[9][12].word = 8;
+			letter[10][12].letter = 'U';
+			letter[10][12].word = 8;
+			letter[11][12].letter = 'S';
+			letter[11][12].word = 8;
+			letter[12][12].letter = 'T';
+			letter[12][12].word = 8;
+			wordToFind[8].numLetters = 9;
+
+			wordToFind[9].word = "RITUAL";
+			letter[1][5].letter = 'R';
+			letter[1][5].word = 9;
+			letter[1][6].letter = 'I';
+			letter[1][6].word = 9;
+			letter[1][7].letter = 'T';
+			letter[1][7].word = 9;
+			letter[1][8].letter = 'U';
+			letter[1][8].word = 9;
+			letter[1][9].letter = 'A';
+			letter[1][9].word = 9;
+			letter[1][10].letter = 'L';
+			letter[1][10].word = 9;
+			wordToFind[9].numLetters = 6;
 	}
 
 }

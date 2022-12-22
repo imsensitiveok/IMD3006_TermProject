@@ -12,16 +12,22 @@ void ofApp::setup(){
 	//setup screens:
 	winScreen.text = "YOU WON!";
 	winScreen.buttonText = "new game";
-	//winScreen.soundEffect.load("---");
 
 	pauseScreen.text = "GAME PAUSED";
 	pauseScreen.buttonText = "resume game";
-	//pauseScreen.soundEffect.load("---");
+	//pauseScreen.soundEffect.load("-");
 	pauseScreen.backgroundColor = ofColor(7, 55, 99, 255);
 
 	gameOverScreen.text = "GAME OVER";
 	gameOverScreen.buttonText = "new game";
-	//gameOverScreen.soundEffect.load("---");
+
+	//sound effects
+	//from https://mixkit.co/free-sound-effects/game/?page=2
+	correct.load("correct.wav");
+	wrong.load("wrong.wav");
+	//the win/lose game sounds don't work in mousePressed
+	winGame.load("winGame.wav");
+	loseGame.load("loseGame.wav");
 
 	//load images:
 	instructions.load("instructionsScreen.png");
@@ -138,6 +144,8 @@ void ofApp::mousePressed(int x, int y, int button){
 					if (grid.letter[i][j].word == -1) {
 						//update timer:
 						time -= 5;
+						//render.playSoundEffect(&wrong);
+						wrong.play();
 						printf("wrong letter\n");
 					}
 
@@ -147,6 +155,8 @@ void ofApp::mousePressed(int x, int y, int button){
 						grid.letter[i][j].colour = ofColor(61, 133, 198);
 						grid.wordToFind[grid.letter[i][j].word].foundLetters++;
 						grid.letter[i][j].clicked = true;
+						//render.playSoundEffect(&correct);
+						correct.play();
 						printf("right letter\n");
 					}
 				}
