@@ -1,14 +1,14 @@
 #include "Main.h"
 
+//--------------------------------------------------------------
 Screen::Screen() {
-
-	//setup background rectangle:
+	//background:
 	background.x = 0;
 	background.y = 0;
 	background.width = WINDOW_W;
 	background.height = WINDOW_H;
 
-	//setup button rectangle:
+	//button:
 	button.x = WINDOW_W / 2 - BUTTON_W / 2;
 	button.y = 3 * WINDOW_H / 4;
 	button.width = BUTTON_W;
@@ -18,9 +18,9 @@ Screen::Screen() {
 	buttonText = "__";
 	text = "__";
 	open = false;
-
 }
 
+//--------------------------------------------------------------
 Screen::~Screen() {
 
 }

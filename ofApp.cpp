@@ -15,17 +15,17 @@ void ofApp::setup(){
 
 	pauseScreen.text = "GAME PAUSED";
 	pauseScreen.buttonText = "resume game";
-	//pauseScreen.soundEffect.load("-");
 	pauseScreen.backgroundColor = ofColor(7, 55, 99, 255);
 
 	gameOverScreen.text = "GAME OVER";
 	gameOverScreen.buttonText = "new game";
 
 	//sound effects
+	//from https://pixabay.com/sound-effects/search/clicks/
+	click.load("click.mp3");
 	//from https://mixkit.co/free-sound-effects/game/?page=2
 	correct.load("correct.wav");
 	wrong.load("wrong.wav");
-	//the win/lose game sounds don't work in mousePressed
 	winGame.load("winGame.wav");
 	loseGame.load("loseGame.wav");
 
@@ -63,28 +63,38 @@ void ofApp::update(){
 			allFound = false;
 		}
 	}
-	if (allFound == true) {
+	if (allFound == true && winScreen.open == false) {
+		//play sound effect:
+		render.playSoundEffect(&winGame);
+		//open screen:
 		winScreen.open = true;
-		printf("won");
-		cout << score;
 	}
 
 	//check if full word is found
 	for (int i = 0; i < NUM_WORDS; i++) {
-		grid.wordToFind[i].check();
+		if (grid.wordToFind[i].isFound == false) {
+			grid.wordToFind[i].check();
+			//play sound effect:
+			if (grid.wordToFind[i].isFound == true) {
+				render.playSoundEffect(&correct);
+			}
+		}
 	}
 
 	//check if game over:
-	if (time <= 0) {
+	if (time <= 0 && gameOverScreen.open == false) {
+		//play sound effect:
+		render.playSoundEffect(&loseGame);
+		//open screen:
 		gameOverScreen.open = true;
 	}
 
-	//timer automatically counts down
+	//timer:
 	if (time >= 0 && pauseScreen.open == false && instructionsOpen == false && winScreen.open == false) {
 		time -= 0.025;
 	}
 
-	//track score:
+	//score:
 	int newScore = 0;
 	for (int i = 0; i < NUM_WORDS; i++) {
 		if (grid.wordToFind[i].isFound == true) {
@@ -132,6 +142,7 @@ void ofApp::draw(){
 void ofApp::mousePressed(int x, int y, int button){
 
 	//LETTER SELECTION:
+	
 	//loop through letters
 	if (winScreen.open == false && pauseScreen.open == false && gameOverScreen.open == false) {
 		for (int i = 0; i < NUM_LETTERS; i++) {
@@ -140,24 +151,20 @@ void ofApp::mousePressed(int x, int y, int button){
 				//checks if clicked inside letter
 				if (grid.letter[i][j].square.inside(x, y) && grid.letter[i][j].clicked == false) {
 
-					//IF wrong letter:
+					//if wrong letter:
 					if (grid.letter[i][j].word == -1) {
 						//update timer:
 						time -= 5;
-						//render.playSoundEffect(&wrong);
-						wrong.play();
-						printf("wrong letter\n");
+						//play sound effect:
+						render.playSoundEffect(&wrong);
 					}
 
-					//IF right letter:
+					//if right letter:
 					else {
-						//changes colour:
+						//change colour:
 						grid.letter[i][j].colour = ofColor(61, 133, 198);
 						grid.wordToFind[grid.letter[i][j].word].foundLetters++;
 						grid.letter[i][j].clicked = true;
-						//render.playSoundEffect(&correct);
-						correct.play();
-						printf("right letter\n");
 					}
 				}
 			}
@@ -166,41 +173,50 @@ void ofApp::mousePressed(int x, int y, int button){
 
 	
 	//BUTTONS:
-	//win screen:
+	
+	//win screen (new game button):
 	if (winScreen.button.inside(x, y) && winScreen.open == true) {
+		//closes screen:
 		winScreen.open = false;
+		//resets game:
 		Grid newGrid;
 		grid = newGrid;
 		setup();
-		printf("new game\n");
 	}
-	//paused screen:
-	if (pauseScreen.button.inside(x, y) && pauseScreen.open == true) {
-		pauseScreen.open = false;
-		printf("resume\n");
-	}
-	//game over screen:
+	//game over screen (new game button):
 	if (gameOverScreen.button.inside(x, y) && gameOverScreen.open == true) {
+		//closes screen:
 		gameOverScreen.open = false;
+		//resets game:
 		Grid newGrid;
 		grid = newGrid;
 		setup();
-		printf("new game\n");
 	}
-	//pause:
+	//paused screen (unpause button):
+	if (pauseScreen.button.inside(x, y) && pauseScreen.open == true) {
+		//plays sound effect:
+		render.playSoundEffect(&click);
+		//closes screen:
+		pauseScreen.open = false;
+	}
+	//home screen (pause button):
 	if (pauseButton.inside(x, y) && winScreen.open == false && pauseScreen.open == false && gameOverScreen.open == false) {
+		//plays sound effect:
+		render.playSoundEffect(&click);
+		//opens screen:
 		pauseScreen.open = true;
-		printf("paused\n");
 	}
-	//instructions:
+	//home screen (instructions button):
 	if (instructionsButton.inside(x, y) && winScreen.open == false && pauseScreen.open == false && gameOverScreen.open == false) {
+		//plays sound effect:
+		render.playSoundEffect(&click);
 		if (instructionsOpen == false) {
+			//opens screen:
 			instructionsOpen = true;
-			printf("open instructions\n");
 		}
 		else if (instructionsOpen == true) {
+			//closes screen:
 			instructionsOpen = false;
-			printf("close instructions\n");
 		}
 	}
 }

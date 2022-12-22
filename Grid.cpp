@@ -1,7 +1,7 @@
 #include "Main.h"
 
+//--------------------------------------------------------------
 Grid::Grid() {
-
 	//SETUP LETTER POSITIONS:
 	for (int i = 0; i < NUM_LETTERS; i++) {
 		for (int j = 0; j < NUM_LETTERS; j++) {
@@ -17,20 +17,17 @@ Grid::Grid() {
 		}
 	}
 
+	//RANDOMIZE GAME:
 	gameNum = rand() % 3;
-	
 }
 
+//--------------------------------------------------------------
 Grid::~Grid() {
 
 }
 
+//--------------------------------------------------------------
 void Grid::setupGrid() {
-
-	//letter[i][j]
-	//i = column
-	//j = row
-	
 	//GAME 0:
 	if (gameNum == 0) {
 
@@ -176,6 +173,7 @@ void Grid::setupGrid() {
 			wordToFind[9].numLetters = 6;
 			
 	}
+	//GAME 1:
 	else if (gameNum == 1) {
 
 		wordToFind[0].word = "BASEBALL";
@@ -350,6 +348,7 @@ void Grid::setupGrid() {
 			letter[1][11].word = 9;
 			wordToFind[9].numLetters = 7;
 	}
+	//GAME 2:
 	else if (gameNum == 2) {
 			wordToFind[0].word = "MAGIC";
 			letter[5][2].letter = 'M';

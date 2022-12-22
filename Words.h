@@ -3,7 +3,6 @@
 class Words
 {
 public:
-
 	//DATA:
 	string word;
 	int numLetters;
@@ -14,5 +13,4 @@ public:
 	Words();
 	~Words();
 	void check();
-
 };

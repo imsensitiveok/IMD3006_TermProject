@@ -3,11 +3,9 @@
 class Screen
 {
 public:
-
 	ofRectangle background;
 	ofRectangle button;
 	ofColor backgroundColor;
-	ofSoundPlayer soundEffect;
 
 	//DATA:
 	string text;
@@ -17,5 +15,4 @@ public:
 	//FUNCTIONS:
 	Screen();
 	~Screen();
-
 };

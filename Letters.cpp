@@ -1,5 +1,6 @@
 #include "Main.h"
 
+//--------------------------------------------------------------
 Letters::Letters() {
 	colour = ofColor(255, 255, 255);
 	square.width = SIZE;
@@ -9,6 +10,7 @@ Letters::Letters() {
 	clicked = false;
 }
 
+//--------------------------------------------------------------
 Letters::~Letters() {
 
 }

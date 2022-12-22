@@ -14,7 +14,6 @@ public:
 	//FUNCTIONS:
 	Letters();
 	~Letters();
-
 };
 
 

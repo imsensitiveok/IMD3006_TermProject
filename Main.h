@@ -4,6 +4,7 @@
 
 using namespace std;
 
+//HEADERS:
 #include "ofMain.h"
 #include "Screen.h"
 #include "Letters.h"
@@ -12,6 +13,7 @@ using namespace std;
 #include "Render.h"
 #include "ofApp.h"
 
+//GLOBAL VARIABLES:
 #define SIZE 40
 #define BUFFER 10
 #define GRID_X 40

@@ -2,10 +2,9 @@
 
 #include "ofMain.h"
 
-class ofApp : public ofBaseApp{
-
+class ofApp : public ofBaseApp
+{
 	public:
-
 		//CLASSSES:
 		Render render;
 		Grid grid;
@@ -14,10 +13,11 @@ class ofApp : public ofBaseApp{
 		Screen gameOverScreen;
 
 		//SOUND EFFECTS:
+		ofSoundPlayer click;
 		ofSoundPlayer correct;
 		ofSoundPlayer wrong;
-		ofSoundPlayer loseGame;
 		ofSoundPlayer winGame;
+		ofSoundPlayer loseGame;
 
 		//BUTTONS:
 		ofRectangle pauseButton;
@@ -29,7 +29,6 @@ class ofApp : public ofBaseApp{
 		//DATA:
 		float time;
 		bool instructionsOpen;
-		//int gameNum;
 		int score;
 
 		//FUNCTIONS:
@@ -37,5 +36,4 @@ class ofApp : public ofBaseApp{
 		void update();
 		void draw();
 		void mousePressed(int x, int y, int button);
-		
 };
