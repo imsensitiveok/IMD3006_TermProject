@@ -17,6 +17,7 @@ void ofApp::setup(){
 	pauseScreen.text = "GAME PAUSED";
 	pauseScreen.buttonText = "resume game";
 	//pauseScreen.soundEffect.load("---");
+	pauseScreen.themeColor = ofColor(7, 55, 99, 255);
 
 	gameOverScreen.text = "GAME OVER";
 	gameOverScreen.buttonText = "new game";
@@ -74,7 +75,7 @@ void ofApp::update(){
 	}
 
 	//timer automatically counts down
-	if (time >= 0 && pauseScreen.open == false) {
+	if (time >= 0 && pauseScreen.open == false && instructionsOpen == false) {
 		time -= 0.025;
 	}
 
@@ -82,7 +83,7 @@ void ofApp::update(){
 	int newScore = 0;
 	for (int i = 0; i < NUM_WORDS; i++) {
 		if (grid.wordToFind[i].isFound == true) {
-			newScore += grid.wordToFind[i].numLetters * 5;
+			newScore += grid.wordToFind[i].numLetters * POINTS_PER_LETTER;
 		}
 	}
 	score = newScore;
@@ -93,7 +94,7 @@ void ofApp::update(){
 void ofApp::draw(){
 
 	//draw background:
-	ofSetBackgroundColor(0, 0, 0);
+	ofSetBackgroundColor(7, 55, 99);
 
 	//draw grid:
 	render.drawGrid(&grid);
@@ -118,6 +119,7 @@ void ofApp::draw(){
 	//draw instructions:
 	if (instructionsOpen == true) {
 		render.drawImage(&instructions, 0, 0);
+		render.drawButton(&instructionsButton, "close");
 	}
 }
 
@@ -135,8 +137,6 @@ void ofApp::mousePressed(int x, int y, int button){
 
 					//IF wrong letter:
 					if (grid.letter[i][j].word == -1) {
-						//changes colour:
-						grid.letter[i][j].colour = ofColor(255, 0, 0);
 						//update timer:
 						time -= 5;
 						printf("wrong letter\n");
@@ -145,12 +145,11 @@ void ofApp::mousePressed(int x, int y, int button){
 					//IF right letter:
 					else {
 						//changes colour:
-						grid.letter[i][j].colour = ofColor(0, 255, 0);
+						grid.letter[i][j].colour = ofColor(61, 133, 198);
 						grid.wordToFind[grid.letter[i][j].word].foundLetters++;
+						grid.letter[i][j].clicked = true;
 						printf("right letter\n");
 					}
-
-					grid.letter[i][j].clicked = true;
 				}
 			}
 		}

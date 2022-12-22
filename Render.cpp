@@ -17,7 +17,7 @@ void Render::drawGrid(Grid* grid) {
 			ofDrawRectangle(grid->letter[i][j].square);
 
 			//draw letter:
-			ofSetColor(0, 0, 0);
+			ofSetColor(7, 55, 99);
 			ofDrawBitmapString(grid->letter[i][j].letter, GRID_X + SIZE * i + BUFFER * i + SIZE / 2, GRID_Y + SIZE * j + BUFFER * j + SIZE / 2);
 		}
 	}
@@ -27,9 +27,8 @@ void Render::drawGrid(Grid* grid) {
 	ofDrawBitmapString("WORDS TO FIND:", 850, 150);
 	for (int i = 0; i < NUM_WORDS; i++) {
 		ofSetColor(255, 255, 255);
-		ofSetColor(255, 255, 255);
 		if (grid->wordToFind[i].isFound == true) {
-			ofSetColor(100, 100, 100);
+			ofSetColor(61, 133, 198);
 		}
 		ofDrawBitmapString(grid->wordToFind[i].word, 870, 175 + i * 20);
 	}
@@ -51,7 +50,7 @@ void Render::displayScreen(Screen* screen) {
 		
 		//draw button:
 		ofDrawRectangle(screen->button);
-		ofSetColor(0, 0, 0);
+		ofSetColor(7, 55, 99);
 		ofDrawBitmapString(screen->buttonText, screen->button.x + BUTTON_W / 4, screen->button.y + BUTTON_H / 2);
 
 	}
@@ -60,7 +59,7 @@ void Render::displayScreen(Screen* screen) {
 void Render::drawButton(ofRectangle* button, string text) {
 	ofSetColor(255, 255, 255);
 	ofDrawRectangle(*button);
-	ofSetColor(0, 0, 0);
+	ofSetColor(7, 55, 99);
 	ofDrawBitmapString(text, button->x + BUTTON_W / 4, button->y + BUTTON_H / 2);
 }
 
