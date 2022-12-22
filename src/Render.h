@@ -3,6 +3,9 @@
 class Render
 {
 public:
+	ofColor primaryColor;
+	ofColor secondaryColor;
+
 	//DATA:
 	int buffer;
 

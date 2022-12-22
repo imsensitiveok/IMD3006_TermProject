@@ -3,7 +3,6 @@
 class Letters
 {
 public:
-	ofColor colour;
 	ofRectangle square;
 
 	//DATA:

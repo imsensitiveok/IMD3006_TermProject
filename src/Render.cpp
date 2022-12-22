@@ -3,6 +3,8 @@
 //--------------------------------------------------------------
 Render::Render() {
 	buffer = 10;
+	primaryColor = ofColor(7, 55, 99);
+	secondaryColor = ofColor(255, 255, 255);
 }
 
 //--------------------------------------------------------------
@@ -12,25 +14,33 @@ Render::~Render() {
 
 //--------------------------------------------------------------
 void Render::drawGrid(Grid* grid) {
+	//draw background:
+	ofSetBackgroundColor(primaryColor);
+
 	//GRID:
 	for (int i = 0; i < NUM_LETTERS; i++) {
 		for (int j = 0; j < NUM_LETTERS; j++) {
 			//draw square:
-			ofSetColor(grid->letter[i][j].colour);
-			ofDrawRectangle(grid->letter[i][j].square);
-
+			if (grid->letter[i][j].clicked == true) {
+				ofSetColor(61, 133, 198);
+				ofDrawRectangle(grid->letter[i][j].square);
+			}
+			else {
+				ofSetColor(secondaryColor);
+				ofDrawRectangle(grid->letter[i][j].square);
+			}
 			//draw letter:
-			ofSetColor(7, 55, 99);
+			ofSetColor(primaryColor);
 			ofDrawBitmapString(grid->letter[i][j].letter, GRID_X + SIZE * i + BUFFER * i + SIZE / 2, GRID_Y + SIZE * j + BUFFER * j + SIZE / 2);
 		}
 	}
 
 	//WORD LIST:
-	ofSetColor(255, 255, 255);
+	ofSetColor(secondaryColor);
 	ofDrawBitmapString("WORDS TO FIND:", 850, 150);
 	for (int i = 0; i < NUM_WORDS; i++) {
 		//set colour depending on if found:
-		ofSetColor(255, 255, 255);
+		ofSetColor(secondaryColor);
 		if (grid->wordToFind[i].isFound == true) {
 			ofSetColor(61, 133, 198);
 		}
@@ -42,7 +52,6 @@ void Render::drawGrid(Grid* grid) {
 //--------------------------------------------------------------
 void Render::displayScreen(Screen* screen) {
 	if (screen->open == true) {
-
 		//draw background:
 		ofSetColor(screen->backgroundColor);
 		ofDrawRectangle(screen->background);
@@ -55,7 +64,6 @@ void Render::displayScreen(Screen* screen) {
 		ofDrawRectangle(screen->button);
 		ofSetColor(7, 55, 99);
 		ofDrawBitmapString(screen->buttonText, screen->button.x + BUTTON_W / 4, screen->button.y + BUTTON_H / 2);
-
 	}
 }
 
@@ -68,10 +76,10 @@ void Render::playSoundEffect(ofSoundPlayer* snd) {
 //--------------------------------------------------------------
 void Render::drawButton(ofRectangle* button, string text) {
 	//draw rectangle:
-	ofSetColor(255, 255, 255);
+	ofSetColor(secondaryColor);
 	ofDrawRectangle(*button);
 	//draw text on top of rectangle:
-	ofSetColor(7, 55, 99);
+	ofSetColor(primaryColor);
 	ofDrawBitmapString(text, button->x + BUTTON_W / 4, button->y + BUTTON_H / 2);
 }
 
@@ -84,6 +92,6 @@ void Render::drawImage(ofImage* img, int x, int y) {
 
 //--------------------------------------------------------------
 void Render::drawText(string txt, int x, int y) {
-	ofSetColor(255, 255, 255);
+	ofSetColor(secondaryColor);
 	ofDrawBitmapString(txt, x, y);
 }

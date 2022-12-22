@@ -28,12 +28,14 @@ class ofApp : public ofBaseApp
 
 		//DATA:
 		float time;
-		bool instructionsOpen;
 		int score;
+		bool instructionsOpen;
+		bool lightMode;
 
 		//FUNCTIONS:
 		void setup();
 		void update();
 		void draw();
 		void mousePressed(int x, int y, int button);
+		void keyPressed(int key);
 };

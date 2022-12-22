@@ -7,20 +7,17 @@ void ofApp::setup(){
 	ofSetWindowTitle("Word Search");
 	ofSetWindowShape(WINDOW_W, WINDOW_H);
 	ofSetWindowPosition(40, 40);
-	
 
 	//setup screens:
 	winScreen.text = "YOU WON!";
 	winScreen.buttonText = "new game";
-
 	pauseScreen.text = "GAME PAUSED";
 	pauseScreen.buttonText = "resume game";
 	pauseScreen.backgroundColor = ofColor(7, 55, 99, 255);
-
 	gameOverScreen.text = "GAME OVER";
 	gameOverScreen.buttonText = "new game";
 
-	//sound effects
+	//sound effects:
 	//from https://pixabay.com/sound-effects/search/clicks/
 	click.load("click.mp3");
 	//from https://mixkit.co/free-sound-effects/game/?page=2
@@ -44,13 +41,12 @@ void ofApp::setup(){
 
 	//setup data:
 	time = AMOUNT_OF_TIME;
-	instructionsOpen = false;
 	score = 0;
-
+	instructionsOpen = false;
+	lightMode = false;
 
 	//setup grid:
 	grid.setupGrid();
-	
 }
 
 //--------------------------------------------------------------
@@ -70,7 +66,7 @@ void ofApp::update(){
 		winScreen.open = true;
 	}
 
-	//check if full word is found
+	//check if full word is found:
 	for (int i = 0; i < NUM_WORDS; i++) {
 		if (grid.wordToFind[i].isFound == false) {
 			grid.wordToFind[i].check();
@@ -102,15 +98,10 @@ void ofApp::update(){
 		}
 	}
 	score = newScore;
-
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-
-	//draw background:
-	ofSetBackgroundColor(7, 55, 99);
-
 	//draw grid:
 	render.drawGrid(&grid);
 	
@@ -147,7 +138,6 @@ void ofApp::mousePressed(int x, int y, int button){
 	if (winScreen.open == false && pauseScreen.open == false && gameOverScreen.open == false) {
 		for (int i = 0; i < NUM_LETTERS; i++) {
 			for (int j = 0; j < NUM_LETTERS; j++) {
-
 				//checks if clicked inside letter
 				if (grid.letter[i][j].square.inside(x, y) && grid.letter[i][j].clicked == false) {
 
@@ -161,9 +151,9 @@ void ofApp::mousePressed(int x, int y, int button){
 
 					//if right letter:
 					else {
-						//change colour:
-						grid.letter[i][j].colour = ofColor(61, 133, 198);
+						//update foundLetters:
 						grid.wordToFind[grid.letter[i][j].word].foundLetters++;
+						//set clicked to true:
 						grid.letter[i][j].clicked = true;
 					}
 				}
@@ -218,5 +208,19 @@ void ofApp::mousePressed(int x, int y, int button){
 			//closes screen:
 			instructionsOpen = false;
 		}
+	}
+}
+
+void ofApp::keyPressed(int key) {
+	//SPACEBAR:
+	if (key == 32 && lightMode == false) {
+		render.primaryColor = ofColor(7, 55, 99);
+		render.secondaryColor = ofColor(255, 255, 255);
+		lightMode = true;
+	}
+	else if (key == 32 && lightMode == true) {
+		render.primaryColor = ofColor(255, 255, 255);
+		render.secondaryColor = ofColor(7, 55, 99);
+		lightMode = false;
 	}
 }
