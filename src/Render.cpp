@@ -2,7 +2,6 @@
 
 //--------------------------------------------------------------
 Render::Render() {
-	buffer = 10;
 	primaryColor = ofColor(7, 55, 99);
 	secondaryColor = ofColor(255, 255, 255);
 }

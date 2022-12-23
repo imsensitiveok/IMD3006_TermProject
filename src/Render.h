@@ -6,9 +6,6 @@ public:
 	ofColor primaryColor;
 	ofColor secondaryColor;
 
-	//DATA:
-	int buffer;
-
 	//FUNCTIONS:
 	Render();
 	~Render();
