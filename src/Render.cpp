@@ -23,12 +23,12 @@ void Render::drawGrid(Grid* grid) {
 			//draw square:
 			if (grid->letter[i][j].clicked == true) {
 				ofSetColor(61, 133, 198);
-				ofDrawRectangle(grid->letter[i][j].square);
 			}
 			else {
 				ofSetColor(secondaryColor);
-				ofDrawRectangle(grid->letter[i][j].square);
 			}
+			ofDrawRectangle(grid->letter[i][j].square);
+
 			//draw letter:
 			ofSetColor(primaryColor);
 			ofDrawBitmapString(grid->letter[i][j].letter, GRID_X + SIZE * i + BUFFER * i + SIZE / 2, GRID_Y + SIZE * j + BUFFER * j + SIZE / 2);
