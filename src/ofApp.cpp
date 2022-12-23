@@ -131,14 +131,16 @@ void ofApp::draw(){
 		render.drawButton(&instructionsButton, "close");
 	}
 
-	if (grid.gameNum == 0) {
-		render.drawImage(&animals, 0, 0);
-	}
-	else if (grid.gameNum == 1) {
-		render.drawImage(&sports, 0, 0);
-	}
-	else if (grid.gameNum == 2) {
-		render.drawImage(&witch, 0, 0);
+	if (winScreen.open == false && pauseScreen.open == false && gameOverScreen.open == false && instructionsOpen == false) {
+		if (grid.gameNum == 0) {
+			render.drawImage(&animals, 0, 0);
+		}
+		else if (grid.gameNum == 1) {
+			render.drawImage(&sports, 0, 0);
+		}
+		else if (grid.gameNum == 2) {
+			render.drawImage(&witch, 0, 0);
+		}
 	}
 }
 
