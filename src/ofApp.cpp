@@ -28,6 +28,9 @@ void ofApp::setup(){
 
 	//load images:
 	instructions.load("instructionsScreen.png");
+	sports.load("sports.png");
+	witch.load("witch.png");
+	animals.load("animals.png");
 
 	//setup buttons:
 	pauseButton.x = 850;
@@ -126,6 +129,16 @@ void ofApp::draw(){
 	if (instructionsOpen == true) {
 		render.drawImage(&instructions, 0, 0);
 		render.drawButton(&instructionsButton, "close");
+	}
+
+	if (grid.gameNum == 0) {
+		render.drawImage(&animals, 0, 0);
+	}
+	else if (grid.gameNum == 1) {
+		render.drawImage(&sports, 0, 0);
+	}
+	else if (grid.gameNum == 2) {
+		render.drawImage(&witch, 0, 0);
 	}
 }
 
