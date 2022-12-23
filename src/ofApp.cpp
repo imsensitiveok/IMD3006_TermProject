@@ -26,12 +26,6 @@ void ofApp::setup(){
 	winGame.load("winGame.wav");
 	loseGame.load("loseGame.wav");
 
-	//load images:
-	instructions.load("instructionsScreen.png");
-	sports.load("sports.png");
-	witch.load("witch.png");
-	animals.load("animals.png");
-
 	//setup buttons:
 	pauseButton.x = 850;
 	pauseButton.y = 600;
@@ -50,6 +44,20 @@ void ofApp::setup(){
 
 	//setup grid:
 	grid.setupGrid();
+
+	//load images:
+	instructions.load("instructionsScreen.png");
+	switch (grid.gameNum) {
+	case 0:
+		themedImage.load(ANIMALS);
+		break;
+	case 1:
+		themedImage.load(SPORTS);
+		break;
+	case 2:
+		themedImage.load(WITCH);
+		break;
+	}
 }
 
 //--------------------------------------------------------------
@@ -120,6 +128,9 @@ void ofApp::draw(){
 	render.drawButton(&pauseButton, "pause");
 	render.drawButton(&instructionsButton, "instructions");
 
+	//draw themed images:
+	render.drawImage(&themedImage, 0, 0);
+
 	//draw screens:
 	render.displayScreen(&winScreen);
 	render.displayScreen(&pauseScreen);
@@ -129,18 +140,6 @@ void ofApp::draw(){
 	if (instructionsOpen == true) {
 		render.drawImage(&instructions, 0, 0);
 		render.drawButton(&instructionsButton, "close");
-	}
-
-	if (winScreen.open == false && pauseScreen.open == false && gameOverScreen.open == false && instructionsOpen == false) {
-		if (grid.gameNum == 0) {
-			render.drawImage(&animals, 0, 0);
-		}
-		else if (grid.gameNum == 1) {
-			render.drawImage(&sports, 0, 0);
-		}
-		else if (grid.gameNum == 2) {
-			render.drawImage(&witch, 0, 0);
-		}
 	}
 }
 

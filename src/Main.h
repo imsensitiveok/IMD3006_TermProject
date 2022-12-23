@@ -26,3 +26,6 @@ using namespace std;
 #define BUTTON_W 200
 #define AMOUNT_OF_TIME 100
 #define POINTS_PER_LETTER 2
+#define SPORTS "sports.png"
+#define ANIMALS "animals.png"
+#define WITCH "witch.png"

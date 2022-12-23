@@ -25,9 +25,7 @@ class ofApp : public ofBaseApp
 
 		//IMAGES:
 		ofImage instructions;
-		ofImage sports;
-		ofImage witch;
-		ofImage animals;
+		ofImage themedImage;
 
 		//DATA:
 		float time;
